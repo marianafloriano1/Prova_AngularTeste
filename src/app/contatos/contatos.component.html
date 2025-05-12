@@ -1,0 +1,55 @@
+
+<div class="container bg-primary-subtle mt-5 col-8">
+  <div class="row">
+    <div class="col-6 m-auto">
+      <h2 class="text-center mt-5 mb-3">Cadastro Telefonico</h2>
+      <form [formGroup]="formTelefone">
+        <div class="mb-3">
+          <label for="inputName" class="form-label">Nome</label>
+          <input formControlName="name" type="text" class="form-control" id="inputName" aria-describedby="nameHelp">
+         
+        </div>
+        <div class="mb-3">
+          <label for="inputTelefone" class="form-label">Telefone</label>
+          <input formControlName="telefone" type="text" class="form-control" id="inputTelefone"
+            aria-describedby="telefoneHelp">
+         
+        </div>
+
+
+       <button *ngIf="!isEditing" type="submit" class="btn btn-success" (click)="save()">Salvar</button>
+        <button *ngIf="isEditing" type="submit" class="btn btn-success" (click)="confirmeSalvar()">Salvar</button>
+
+      </form>
+      <h3 class="text-center mt-5 mb-3">Telefones Cadastrados</h3>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">Remover</th>
+            <th scope="col">Alterar</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let t of telefone">
+           
+            <td>{{t.name}}</td>
+            <td>{{t.telefone}}</td>
+            <td><button class="btn btn-danger" (click)="delete(t)">
+                Remover
+              </button>
+            </td>
+            <td><button class="btn btn-primary" (click)="edite(t)">
+                Alterar
+              </button>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
